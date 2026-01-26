@@ -1,0 +1,172 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         
+    <parent>
+        <groupId>org.mule</groupId>
+        <artifactId>mule-runtime-bom-parent</artifactId>
+        <version>4.7.2</version>
+    </parent>
+         
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>mule-ee-runtime-bom</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <!-- overrides the version from CE -->
+        <wrapperVersion>3.5.51</wrapperVersion>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Mule CE dependencies -->
+            <dependency>
+                <groupId>org.mule</groupId>
+                <artifactId>mule-runtime-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- API Gateway -->
+            <dependency>
+                <groupId>com.mulesoft.mule.distributions</groupId>
+                <artifactId>api-gateway-bom-impl</artifactId>
+                <version>${agw.version}</version>
+                <type>pom</type>
+            </dependency>
+    
+            <!-- Mule Artifact patches -->
+            <dependency>
+                <groupId>com.mulesoft.mule.runtime.bom</groupId>
+                <artifactId>mule-artifact-patches-bom</artifactId>
+                <version>${mule.artifact.patches.bom.version}</version>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mule</groupId>
+                <artifactId>mule-encryption</artifactId>
+                <version>${muleEncryptionVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mule.btm</groupId>
+                <artifactId>mule-btm</artifactId>
+                <version>${bitronixTMVersion}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.transaction</groupId>
+                        <artifactId>jta</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.jms</groupId>
+                        <artifactId>javax.jms-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo-shaded</artifactId>
+                <version>${kryo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>minlog</artifactId>
+                <version>${minlog.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.javakaffee</groupId>
+                <artifactId>kryo-serializers</artifactId>
+                <version>${kryo-serializers.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.esotericsoftware</groupId>
+                        <artifactId>kryo</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>${objenesis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.hazelcast</groupId>
+                <artifactId>hazelcast</artifactId>
+                <version>${hazelcastVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hazelcast</groupId>
+                <artifactId>hazelcast</artifactId>
+                <classifier>tests</classifier>
+                <version>${hazelcastVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>fluent-hc</artifactId>
+                <version>${apacheHttpFluentVersion}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apacheHttpClientVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${apacheHttpCoreVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbutils</groupId>
+                <artifactId>commons-dbutils</artifactId>
+                <version>${commonsDbUtilsVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mulesoft.licm</groupId>
+                <artifactId>licm</artifactId>
+                <version>${licmVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.schlichtherle</groupId>
+                <artifactId>truelicense</artifactId>
+                <version>${truelicenseVersion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tanukisoft</groupId>
+                <artifactId>wrapper</artifactId>
+                <version>${wrapperVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>tanukisoft</groupId>
+                <artifactId>wrapper-delta-pack</artifactId>
+                <version>${wrapperVersion}</version>
+                <type>tar.gz</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mulesoft.agent</groupId>
+                <artifactId>agent-setup</artifactId>
+                <version>${mule.agent.version}</version>
+                <type>zip</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>*</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+</project>

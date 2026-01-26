@@ -1,0 +1,97 @@
+
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;36m  PHASE 1: Analyze Project[0m
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;34m[INFO][0m Running analyzer on hello-api...
+[0;32m[SUCCESS][0m Analysis complete
+[0;34m[INFO][0m Selected Java version: 17
+[0;34m[INFO][0m Build container: mule-build:java-17
+
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;36m  PHASE 2: Verify Build Container[0m
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;32m[SUCCESS][0m Build container ready: mule-build:java-17
+[0;32m[SUCCESS][0m Maven cache volume ready: mule-m2-cache
+[0;34m[INFO][0m Ensuring cache volume permissions...
+
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;36m  PHASE 3: Build Project[0m
+[0;36m═══════════════════════════════════════════════════════════[0m
+[0;34m[INFO][0m Project: hello-api
+[0;34m[INFO][0m Maven goals: package -DskipTests
+[0;34m[INFO][0m Cleaning target directory on host...
+[0;34m[INFO][0m Starting Maven build in Docker...
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.example:hello-api >------------------------
+[INFO] Building hello-api 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------[ mule-application ]--------------------------
+[INFO] 
+[INFO] --- mule:4.3.0:validate (default-validate) @ hello-api ---
+[INFO] 
+[INFO] --- mule:4.3.0:initialize (default-initialize) @ hello-api ---
+[INFO] 
+[INFO] --- mule:4.3.0:generate-sources (default-generate-sources) @ hello-api ---
+[INFO] 
+[INFO] --- mule:4.3.0:process-sources (default-process-sources) @ hello-api ---
+[INFO] About to fetch required dependencies for artifact: com.example:hello-api:pom:1.0.0. This may take a while...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hello-api ---
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- mule:4.3.0:process-resources (default-process-resources) @ hello-api ---
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ hello-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- mule:4.3.0:compile (default-compile) @ hello-api ---
+[INFO] 
+[INFO] --- mule:4.3.0:process-classes (default-process-classes) @ hello-api ---
+[INFO] About to fetch required dependencies for artifact: 0821f120-fa82-11f0-83ca-42a70912c658:0821f120-fa82-11f0-83ca-42a70912c658:pom:4.7.2. This may take a while...
+[WARNING] Internal plugin library 'org.mule.runtime:mule-extensions-api' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-api' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-metadata-model-api' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-artifact-declaration' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-artifact-declaration-persistence' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:api-annotations' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-metadata-model-java' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-message-metadata-model' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[INFO] About to fetch required dependencies for artifact: 086ae100-fa82-11f0-83ca-42a70912c658:086ae100-fa82-11f0-83ca-42a70912c658:pom:4.7.2. This may take a while...
+[WARNING] Internal plugin library 'org.mule.runtime:mule-extensions-api' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-api' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-metadata-model-api' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-artifact-declaration' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-artifact-declaration-persistence' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:api-annotations' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-metadata-model-java' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[WARNING] Internal plugin library 'org.mule.runtime:mule-message-metadata-model' is a Mule Runtime dependency. It will not be used by 'mule-http-connector-1.9.0-mule-plugin.jar' in order to avoid classloading issues. Please consider removing it, or at least not putting it with 'compile' scope.
+[INFO] About to fetch required dependencies for artifact: 0885bc00-fa82-11f0-83ca-42a70912c658:0885bc00-fa82-11f0-83ca-42a70912c658:pom:4.7.2. This may take a while...
+[INFO] 
+[INFO] --- mule:4.3.0:generate-test-sources (default-generate-test-sources) @ hello-api ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hello-api ---
+[INFO] skip non existing resourceDirectory /workspace/src/test/resources
+[INFO] 
+[INFO] --- mule:4.3.0:generate-test-resources (default-generate-test-resources) @ hello-api ---
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ hello-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- mule:4.3.0:test-compile (default-test-compile) @ hello-api ---
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ hello-api ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- mule:4.3.0:package (default-package) @ hello-api ---
+[INFO] Building zip: /workspace/target/hello-api-1.0.0-mule-application.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.320 s
+[INFO] Finished at: 2026-01-26T06:41:25Z
+[INFO] ------------------------------------------------------------------------
+[0;32m[SUCCESS][0m Build completed successfully!
+[0;32m[SUCCESS][0m Generated artifact: hello-api-1.0.0-mule-application.jar
+[0;34m[INFO][0m Full path: /Users/jcoetzee/Projects/hello-api/target/hello-api-1.0.0-mule-application.jar
+

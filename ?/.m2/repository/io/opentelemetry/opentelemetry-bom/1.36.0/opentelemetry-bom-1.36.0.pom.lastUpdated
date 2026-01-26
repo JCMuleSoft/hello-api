@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Jan 26 05:54:54 UTC 2026
+@default-mule-ee-releases-https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/.lastUpdated=1769406893500
+@default-mulesoft-private-https\://repository.mulesoft.org/nexus/content/repositories/private/.lastUpdated=1769406893912
+@default-libs-releases-https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/.lastUpdated=1769406893707
+https\://repository.mulesoft.org/nexus/content/repositories/public/.lastUpdated=1769406894446
+https\://repository.mulesoft.org/nexus/content/repositories/private/.error=Could not transfer artifact io.opentelemetry\:opentelemetry-bom\:pom\:1.36.0 from/to mulesoft-private (https\://repository.mulesoft.org/nexus/content/repositories/private/)\: status code\: 401, reason phrase\: Unauthorized (401)
+https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/.error=Could not transfer artifact io.opentelemetry\:opentelemetry-bom\:pom\:1.36.0 from/to mule-ee-releases (https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/)\: status code\: 401, reason phrase\: Unauthorized (401)
+https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/.error=Could not transfer artifact io.opentelemetry\:opentelemetry-bom\:pom\:1.36.0 from/to libs-releases (https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/)\: status code\: 401, reason phrase\: Unauthorized (401)

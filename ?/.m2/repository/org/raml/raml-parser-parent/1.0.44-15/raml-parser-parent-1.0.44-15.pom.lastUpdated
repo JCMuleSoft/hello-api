@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Jan 26 05:54:53 UTC 2026
+@default-mule-ee-releases-https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/.lastUpdated=1769406892451
+@default-mulesoft-private-https\://repository.mulesoft.org/nexus/content/repositories/private/.lastUpdated=1769406892957
+@default-libs-releases-https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/.lastUpdated=1769406892660
+https\://repository.mulesoft.org/nexus/content/repositories/public/.lastUpdated=1769406893290
+https\://repository.mulesoft.org/nexus/content/repositories/private/.error=Could not transfer artifact org.raml\:raml-parser-parent\:pom\:1.0.44-15 from/to mulesoft-private (https\://repository.mulesoft.org/nexus/content/repositories/private/)\: status code\: 401, reason phrase\: Unauthorized (401)
+https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/.error=Could not transfer artifact org.raml\:raml-parser-parent\:pom\:1.0.44-15 from/to mule-ee-releases (https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/)\: status code\: 401, reason phrase\: Unauthorized (401)
+https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/.error=Could not transfer artifact org.raml\:raml-parser-parent\:pom\:1.0.44-15 from/to libs-releases (https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/)\: status code\: 401, reason phrase\: Unauthorized (401)

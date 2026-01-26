@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Jan 26 05:54:49 UTC 2026
+https\://repo.maven.apache.org/maven2/.lastUpdated=1769406888357
+@default-mule-ee-releases-https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/.lastUpdated=1769406888565
+@default-libs-releases-https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/.lastUpdated=1769406888772
+https\://repo.maven.apache.org/maven2/.error=
+https\://repository.mulesoft.org/releases/.lastUpdated=1769406889125
+https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/.error=Could not transfer artifact org.mule\:mule-runtime-bom-parent\:pom\:4.7.2 from/to mule-ee-releases (https\://repository.mulesoft.org/nexus/content/repositories/ci-releases/)\: status code\: 401, reason phrase\: Unauthorized (401)
+https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/.error=Could not transfer artifact org.mule\:mule-runtime-bom-parent\:pom\:4.7.2 from/to libs-releases (https\://repository.mulesoft.org/nexus/content/repositories/libs-releases/)\: status code\: 401, reason phrase\: Unauthorized (401)

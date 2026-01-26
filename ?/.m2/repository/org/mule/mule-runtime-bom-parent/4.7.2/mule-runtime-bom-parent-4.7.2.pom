@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.mule</groupId>
+    <artifactId>mule-runtime-bom-parent</artifactId>
+    <version>4.7.2</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <antlrVersion>3.5.3</antlrVersion>
+        <antVersion>1.10.14</antVersion>
+        <aspectjVersion>1.9.22</aspectjVersion>
+        <apacheHttpClientVersion>4.5.13</apacheHttpClientVersion>
+        <byteBuddyVersion>1.14.13</byteBuddyVersion>
+        <c3p0Version>0.10.0</c3p0Version>
+        <caffeineVersion>2.9.3</caffeineVersion>
+        <checkerQualVersion>3.42.0</checkerQualVersion>
+        <commonsBeanUtilsVersion>1.9.4</commonsBeanUtilsVersion>
+        <commonsCliVersion>1.6.0</commonsCliVersion>
+        <commonsCodecVersion>1.16.1</commonsCodecVersion>
+        <commonsCollectionsVersion>4.4</commonsCollectionsVersion>
+        <commonsCollections3Version>3.2.2</commonsCollections3Version>
+        <commonsCompressVersion>1.26.1</commonsCompressVersion>
+        <commonsDbcpVersion>1.4</commonsDbcpVersion>
+        <commonsDbUtilsVersion>1.8.0</commonsDbUtilsVersion>
+        <commonsHttpClientVersion>3.1-14-MULE-001</commonsHttpClientVersion>
+        <commonsIoVersion>2.16.0</commonsIoVersion>
+        <commonsTextVersion>1.11.0</commonsTextVersion>
+        <commonsLangVersion>3.14.0</commonsLangVersion>
+        <commonsNetVersion>3.10.0</commonsNetVersion>
+        <commonsPoolVersion>1.6</commonsPoolVersion>
+        <commonsPool2Version>2.12.0</commonsPool2Version>
+        <commonsMath3Version>3.6.1</commonsMath3Version>
+        <!-- not to be confused with LMAX Disruptor (used by log4j2), this one provides queue impls used by Vibur -->
+        <coversantmediaDisruptorVersion>1.2.10</coversantmediaDisruptorVersion>
+        <disruptorVersion>3.4.4</disruptorVersion>
+        <dom4jVersion>2.1.4</dom4jVersion>
+        <eaioUuidVersion>3.4.2-MULE-001</eaioUuidVersion>
+        <fastUtilVersion>8.5.13</fastUtilVersion>
+        <jsonSchemaVersion>1.14.3</jsonSchemaVersion>
+        <handyUriTemplatesVersion>2.1.8</handyUriTemplatesVersion>
+        <re2jVersion>1.7</re2jVersion>
+        <gsonVersion>2.10.1</gsonVersion>
+        <guavaVersion>33.1.0-jre</guavaVersion>
+        <guavaFailureaccessVersion>1.0.2</guavaFailureaccessVersion>
+        <guavaJ2objcVersion>3.0.0</guavaJ2objcVersion>
+        <guavaListenablefutureVersion>9999.0-empty-to-avoid-conflict-with-guava</guavaListenablefutureVersion>
+        <errorProneAnnotationsVersion>2.26.1</errorProneAnnotationsVersion>
+        <failsafeVersion>2.4.4</failsafeVersion>
+
+        <!-- It must be verified that the com.fasterxml.jackson.core:jackson-databind version is compatible
+        with the com.github.java-json-tools:json-schema-validator version -->
+        <jackson2Version>2.17.0</jackson2Version>
+
+        <!-- Metrics/Tracing dependencies -->
+        <opentelemetryVersion>1.36.0</opentelemetryVersion>
+        <opentelemetryAlphaVersion>${opentelemetryVersion}-alpha</opentelemetryAlphaVersion>
+        <okHttpVersion>4.12.0</okHttpVersion>
+        <okioVersion>3.9.0</okioVersion>
+        <jetbrainsAnnotationsVersion>24.1.0</jetbrainsAnnotationsVersion>
+        <jetbrainsKotlinVersion>1.9.23</jetbrainsKotlinVersion>
+        <ioGrpcVersion>1.63.0</ioGrpcVersion>
+        <perfmarkApiVersion>0.27.0</perfmarkApiVersion>
+        
+        <!-- Java EE dependencies -->
+        <jakarta.activation.version>1.2.2</jakarta.activation.version>
+        <jakarta.annotation.version>1.3.5</jakarta.annotation.version>
+        <jakarta.inject.version>1.0.5</jakarta.inject.version>
+        <jakarta.jws.version>1.1.1</jakarta.jws.version>
+        <java.mail.version>1.6.2</java.mail.version>
+        <jakarta.xml.bind.api.version>2.3.3</jakarta.xml.bind.api.version>
+        <jakarta.jaxws.version>2.3.3</jakarta.jaxws.version>
+        <jakarta.jms.version>2.0.3</jakarta.jms.version>
+        <jakarta.transaction.version>1.3.3</jakarta.transaction.version>
+        <jakarta.resource.api.version>1.7.4</jakarta.resource.api.version>
+        <java.xml.bind.version>2.3.8</java.xml.bind.version>
+        <com.sun.istack.version>3.0.12</com.sun.istack.version>
+        <org.glassfish.jakarta.json.version>1.1.6</org.glassfish.jakarta.json.version>
+        <jakarta.xml.soap.version>1.4.2</jakarta.xml.soap.version>
+        <geronimoSpecsJ2eeVersion>2.0.0</geronimoSpecsJ2eeVersion>
+        <geronimoSpecsJmsVersion>1.1.1</geronimoSpecsJmsVersion>
+        <geronimoSpecsServletApiVersion>1.0</geronimoSpecsServletApiVersion>
+        <graalVersion>22.3.5</graalVersion>
+        <javax.validation.api.version>1.1.0.Final</javax.validation.api.version>
+
+        <jdomVersion>2.0.2</jdomVersion>
+        <jgraphtVersion>1.3.1</jgraphtVersion>
+        <jheapsVersion>0.14</jheapsVersion>
+        <jodaTimeVersion>2.12.7</jodaTimeVersion>
+        <jsonVersion>20240303</jsonVersion>
+        <jsoupVersion>1.17.2</jsoupVersion>
+        <log4jVersion>2.23.1</log4jVersion>
+        <mavenSharedUtilsVersion>3.4.2</mavenSharedUtilsVersion>
+        <mchangeCommonsVersion>0.3.0</mchangeCommonsVersion>
+        <projectReactorVersion>3.6.4</projectReactorVersion>
+        <projectReactorExtraVersion>3.5.1</projectReactorExtraVersion>
+        <quartzVersion>2.3.2</quartzVersion>
+
+        <!-- When raml-parser-2 is updated, it must be verified that the version of its dependency:
+        com.github.java-json-tools:json-schema-validator is compatible with the current com.fasterxml.jackson.core:jackson-databind version -->
+        <raml.parser.2.version>1.0.44-15</raml.parser.2.version>
+
+        <reflectionsVersion>0.10.2</reflectionsVersion>
+        <reactiveStreamsVersion>1.0.4</reactiveStreamsVersion>
+        <rhinoVersion>1.7.14</rhinoVersion>
+        <saxonVersion>12.4</saxonVersion>
+        <semver4jVersion>3.1.0</semver4jVersion>
+        <slf4jVersion>2.0.12</slf4jVersion>
+        <snakeYamlVersion>2.2</snakeYamlVersion>
+        <springVersion>5.3.33</springVersion>
+        <staxUtilsVersion>20080702</staxUtilsVersion>
+        <typesafeConfigVersion>1.4.3</typesafeConfigVersion>
+        <unirestVersion>1.4.9</unirestVersion>
+        <woodstoxVersion>4.4.1</woodstoxVersion>
+        <wrapperVersion>3.2.3</wrapperVersion>
+        <togglzVersion>3.2.1</togglzVersion>
+        <viburVersion>25.0</viburVersion>
+        <xerces2Version>2.11.3-MULE-002</xerces2Version>
+        <xmlApisVersion>1.4.01</xmlApisVersion>
+        <xmlbeansVersion>3.1.0</xmlbeansVersion>
+
+        <!-- EE Dependencies -->
+        <apacheHttpFluentVersion>4.5.14</apacheHttpFluentVersion>
+        <apacheHttpClientVersion>4.5.14</apacheHttpClientVersion>
+        <apacheHttpCoreVersion>4.4.16</apacheHttpCoreVersion>
+        <bitronixTMVersion>2.1.20</bitronixTMVersion>
+        <hazelcastVersion>5.2.5</hazelcastVersion>
+        <kryo.version>4.0.3</kryo.version>
+        <kryo-serializers.version>0.45</kryo-serializers.version>
+        <licmVersion>2.1.9</licmVersion>
+        <minlog.version>1.3.1</minlog.version>
+        <objenesis.version>3.3</objenesis.version>
+        <truelicenseVersion>1.29</truelicenseVersion>
+        <agw.version>4.7.2</agw.version>
+        <mule.agent.version>2.6.4</mule.agent.version>
+        <mule.artifact.patches.bom.version>1.0.24</mule.artifact.patches.bom.version>
+
+        <!-- Mule Snapshot Dependencies -->
+        <muleSdkApiVersion>0.9.2</muleSdkApiVersion>
+        <muleSdkCompatibilityApiVersion>0.9.2</muleSdkCompatibilityApiVersion>
+        <muleDslApiVersion>1.7.2</muleDslApiVersion>
+        <muleAstVersion>1.3.2</muleAstVersion>
+        <mulePropertiesApiVersion>1.3.2</mulePropertiesApiVersion>
+        <muleExtensionsApiVersion>1.7.2</muleExtensionsApiVersion>
+        <muleHttpPolicyApiVersion>1.7.2</muleHttpPolicyApiVersion>
+        <muleMavenClientApi>2.2.2</muleMavenClientApi>
+        <muleMavenClientImpl>2.2.2</muleMavenClientImpl>
+        <muleMavenParser>2.2.2</muleMavenParser>
+        <muleMavenClientTest>2.2.2</muleMavenClientTest>
+        <mulePolicyApiVersion>1.7.2</mulePolicyApiVersion>
+        <muleApiVersion>1.7.2</muleApiVersion>
+        <muleProfilingApiVersion>1.3.2</muleProfilingApiVersion>
+        <muleMetadataModelVersion>1.7.2</muleMetadataModelVersion>
+        <mule.classloader.model.version>4.2.0</mule.classloader.model.version>
+        <muleEncryptionVersion>1.5.2</muleEncryptionVersion>
+        <muleOAuthClientVersion>2.2.2</muleOAuthClientVersion>
+
+        <!--Services-->
+        <muleSchedulerServiceVersion>1.7.2</muleSchedulerServiceVersion>
+        <muleHttpServiceVersion>1.9.2</muleHttpServiceVersion>
+        <muleOAuthServiceVersion>2.4.2</muleOAuthServiceVersion>
+        <muleSoapServiceVersion>1.7.2</muleSoapServiceVersion>
+        <weaveVersion>2.7.2</weaveVersion>
+
+        <!-- Maven Plugins used in the mule-runtime-bom repo -->
+        <maven.clean.plugin.version>3.3.2</maven.clean.plugin.version>
+        <maven.install.plugin.version>3.1.2</maven.install.plugin.version>
+        <maven.deploy.plugin.version>3.1.2</maven.deploy.plugin.version>
+        <maven.site.plugin.version>3.12.1</maven.site.plugin.version>
+        <maven.source.plugin.version>3.3.1</maven.source.plugin.version>
+        <maven.javadoc.plugin.version>3.6.3</maven.javadoc.plugin.version>
+        <maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
+    </properties>
+
+    <modules>
+        <module>mule-javaee-runtime-bom</module>
+        <module>mule-runtime-bom</module>
+        <module>mule-ee-runtime-bom</module>
+    </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>mule-releases</id>
+            <name>Mule Release Repository</name>
+            <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>mule-snapshots</id>
+            <name>Mule Snapshot Repository</name>
+            <url>https://repository-master.mulesoft.org/nexus/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>mulesoft-snapshots</id>
+            <url>https://repository-master.mulesoft.org/nexus/content/repositories/snapshots</url>
+            <snapshots/>
+        </repository>
+        <repository>
+            <id>mulesoft-releases</id>
+            <url>https://repository-master.mulesoft.org/nexus/content/repositories/releases</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven.clean.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven.install.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven.deploy.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven.site.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven.source.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven.javadoc.plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <!-- The enforcer plugin execution is intended to run the rules in this mule-runtime-bom repo -->
+                        <!-- The enforcer configuration intended to be inherited in other repos is present in the 'mule-plugin-mgmt-parent-pom' module -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <version>${maven.enforcer.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>enforce-no-snapshots-in-deps</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireReleaseDeps>
+                                            <message>No Snapshots Allowed in Deps!</message>
+                                        </requireReleaseDeps>
+                                        <requireReleaseVersion>
+                                            <message>No Snapshots Allowed in Project Version!</message>
+                                        </requireReleaseVersion>
+                                        <requirePluginVersions>
+                                            <message>Best Practice is to always define plugin versions!</message>
+                                        </requirePluginVersions>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
