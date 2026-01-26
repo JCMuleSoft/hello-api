@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+      xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+
+    <http:listener-config name="HTTP_Listener_config">
+        <http:listener-connection host="0.0.0.0" port="8081"/>
+    </http:listener-config>
+
+    <!-- GET /hello - Returns greeting with timestamp -->
+    <flow name="hello-flow">
+        <http:listener config-ref="HTTP_Listener_config" path="/hello" allowedMethods="GET"/>
+        <set-payload value='#[%dw 2.0
+output application/json
+---
+{
+    "message": "Hello, World!",
+    "timestamp": now() as String {format: "yyyy-MM-dd'\''T'\''HH:mm:ss.SSSZ"}
+}]'/>
+    </flow>
+
+    <!-- GET /health - Returns health status -->
+    <flow name="health-flow">
+        <http:listener config-ref="HTTP_Listener_config" path="/health" allowedMethods="GET"/>
+        <set-payload value='#[%dw 2.0
+output application/json
+---
+{
+    "status": "UP",
+    "version": "1.0.0"
+}]'/>
+    </flow>
+
+</mule>

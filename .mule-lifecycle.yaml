@@ -1,0 +1,68 @@
+# MuleSoft Project Lifecycle State
+# Managed by mule-lifecycle.ts - DO NOT EDIT MANUALLY
+
+version: "1.0"
+project:
+  name: hello-api
+  type: api
+  version: 1.0.0
+  description: ""
+  github:
+    repo: ""
+    created: false
+lifecycle:
+  current_phase: initialize
+  started_at: 2026-01-26T05:54:39.831Z
+phases:
+  initialize:
+    status: in_progress
+    github_created: false
+    docs_generated: false
+    files_created: []
+    started_at: 2026-01-26T05:54:39.835Z
+  build:
+    status: pending
+  test:
+    status: pending
+    munit:
+      enabled: false
+      tests_run: 0
+      tests_passed: 0
+      coverage_percent: 0
+    integration:
+      enabled: false
+      total_endpoints: 0
+      endpoints_tested: 0
+      tests_run: 0
+      tests_passed: 0
+      tests_failed: 0
+      coverage_percent: 0
+      test_categories:
+        happy_path:
+          run: 0
+          passed: 0
+        error_handling:
+          run: 0
+          passed: 0
+        edge_cases:
+          run: 0
+          passed: 0
+        false_positives:
+          run: 0
+          passed: 0
+        false_negatives:
+          run: 0
+          passed: 0
+    overall_coverage: 0
+  finalize:
+    status: pending
+    container_cleaned: false
+    volumes_cleaned: false
+    github: {}
+    ready_for_deployment: false
+deployment:
+  status: pending
+  target: null
+  environment: null
+  deployed_at: null
+  deployed_by: null

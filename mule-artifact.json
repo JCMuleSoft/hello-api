@@ -1,0 +1,14 @@
+{
+    "name": "hello-api",
+    "minMuleVersion": "4.9.0",
+    "classLoaderModelLoaderDescriptor": {
+        "id": "mule",
+        "attributes": {
+            "exportedResources": []
+        }
+    },
+    "bundleDescriptorLoader": {
+        "id": "mule",
+        "attributes": {}
+    }
+}
