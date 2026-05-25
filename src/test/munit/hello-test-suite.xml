@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
+      xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+      xmlns:http="http://www.mulesoft.org/schema/mule/http"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+        http://www.mulesoft.org/schema/mule/munit-tools http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+
+    <munit:config name="hello-test-suite.xml"/>
+
+    <http:request-config name="HTTP_Request_config">
+        <http:request-connection host="localhost" port="${http.port}"/>
+    </http:request-config>
+
+    <!-- Test 1: Happy path - direct call to implementation flow -->
+    <munit:test name="get-hello-returns-greeting" description="GET /hello implementation returns greeting">
+        <munit:execution>
+            <flow-ref name="get:\hello:hello-api-config"/>
+        </munit:execution>
+        <munit:validation>
+            <munit-tools:assert-that expression="#[payload.message]" is="#[MunitTools::equalTo('Hello, World!')]"/>
+        </munit:validation>
+    </munit:test>
+
+    <!-- Test 2: NOT_FOUND - GET nonexistent resource returns 404 -->
+    <munit:test name="get-nonexistent-returns-404" description="GET /nonexistent returns 404">
+        <munit:enable-flow-sources>
+            <munit:enable-flow-source value="hello-api-main"/>
+        </munit:enable-flow-sources>
+        <munit:execution>
+            <http:request config-ref="HTTP_Request_config" method="GET" path="/api/nonexistent">
+                <http:response-validator>
+                    <http:success-status-code-validator values="1..999"/>
+                </http:response-validator>
+            </http:request>
+        </munit:execution>
+        <munit:validation>
+            <munit-tools:assert-that expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(404)]"/>
+        </munit:validation>
+    </munit:test>
+
+    <!-- Test 3: METHOD_NOT_ALLOWED - DELETE on GET-only resource returns 405 -->
+    <munit:test name="delete-hello-returns-405" description="DELETE /hello returns 405">
+        <munit:enable-flow-sources>
+            <munit:enable-flow-source value="hello-api-main"/>
+        </munit:enable-flow-sources>
+        <munit:execution>
+            <http:request config-ref="HTTP_Request_config" method="DELETE" path="/api/hello">
+                <http:response-validator>
+                    <http:success-status-code-validator values="1..999"/>
+                </http:response-validator>
+            </http:request>
+        </munit:execution>
+        <munit:validation>
+            <munit-tools:assert-that expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(405)]"/>
+        </munit:validation>
+    </munit:test>
+
+    <!-- Test 4: ANY error handler - mock apikit:router to throw unexpected error -->
+    <munit:test name="internal-error-returns-500" description="Internal error returns 500">
+        <munit:enable-flow-sources>
+            <munit:enable-flow-source value="hello-api-main"/>
+        </munit:enable-flow-sources>
+        <munit:behavior>
+            <munit-tools:mock-when processor="apikit:router">
+                <munit-tools:then-return>
+                    <munit-tools:error typeId="MULE:EXPRESSION"/>
+                </munit-tools:then-return>
+            </munit-tools:mock-when>
+        </munit:behavior>
+        <munit:execution>
+            <http:request config-ref="HTTP_Request_config" method="GET" path="/api/hello">
+                <http:response-validator>
+                    <http:success-status-code-validator values="1..999"/>
+                </http:response-validator>
+            </http:request>
+        </munit:execution>
+        <munit:validation>
+            <munit-tools:assert-that expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(500)]"/>
+        </munit:validation>
+    </munit:test>
+
+</mule>

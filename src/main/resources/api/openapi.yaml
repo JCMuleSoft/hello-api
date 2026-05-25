@@ -1,0 +1,46 @@
+openapi: "3.0.3"
+info:
+  title: Hello API
+  version: "1.0.0"
+  description: Simple Hello World MuleSoft API
+
+servers:
+  - url: http://0.0.0.0:8081
+
+paths:
+  /hello:
+    get:
+      summary: Say hello
+      operationId: getHello
+      responses:
+        "200":
+          description: Successful greeting
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HelloResponse"
+              example:
+                message: "Hello, World!"
+
+components:
+  schemas:
+    HelloResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Hello, World!"
+
+  securitySchemes:
+    clientIdEnforcement:
+      type: apiKey
+      name: client_id
+      in: header
+    clientSecretEnforcement:
+      type: apiKey
+      name: client_secret
+      in: header
+
+security:
+  - clientIdEnforcement: []
+    clientSecretEnforcement: []

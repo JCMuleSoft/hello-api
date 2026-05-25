@@ -11,8 +11,9 @@ project:
     repo: ""
     created: false
 lifecycle:
-  current_phase: finalize
+  current_phase: finalized
   started_at: 2026-01-26T05:54:39.831Z
+  completed_at: 2026-01-26T06:43:35.344Z
 phases:
   initialize:
     status: completed
@@ -71,12 +72,16 @@ phases:
     container: mule-lifecycle-test
     test_report: .mule-lifecycle/reports/test-report.md
   finalize:
-    status: in_progress
-    container_cleaned: false
-    volumes_cleaned: false
-    github: {}
-    ready_for_deployment: false
+    status: completed
+    container_cleaned: true
+    volumes_cleaned: true
+    github:
+      commit: 9ef0737
+    ready_for_deployment: true
     started_at: 2026-01-26T06:43:31.686Z
+    completed_at: 2026-01-26T06:43:35.344Z
+    exchange:
+      published: false
 deployment:
   status: pending
   target: null

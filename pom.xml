@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
+    <groupId>6a71d76a-eff0-4b35-bbad-6c82f9d7da8d</groupId>
     <artifactId>hello-api</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.4</version>
     <packaging>mule-application</packaging>
 
     <name>hello-api</name>
@@ -16,7 +16,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <app.runtime>4.9.0</app.runtime>
-        <mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
+        <mule.maven.plugin.version>4.8.0</mule.maven.plugin.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <build>
@@ -32,6 +34,32 @@
                 <version>${mule.maven.plugin.version}</version>
                 <extensions>true</extensions>
             </plugin>
+            <plugin>
+                <groupId>com.mulesoft.munit.tools</groupId>
+                <artifactId>munit-maven-plugin</artifactId>
+                <version>3.7.0</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>test</goal>
+                            <goal>coverage-report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <dynamicPorts>
+                        <dynamicPort>http.port</dynamicPort>
+                    </dynamicPorts>
+                    <coverage>
+                        <runCoverage>true</runCoverage>
+                        <formats>
+                            <format>json</format>
+                        </formats>
+                    </coverage>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -41,6 +69,26 @@
             <artifactId>mule-http-connector</artifactId>
             <version>1.9.0</version>
             <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-apikit-module</artifactId>
+            <version>1.10.3</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.mulesoft.munit</groupId>
+            <artifactId>munit-runner</artifactId>
+            <version>3.7.0</version>
+            <classifier>mule-plugin</classifier>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mulesoft.munit</groupId>
+            <artifactId>munit-tools</artifactId>
+            <version>3.7.0</version>
+            <classifier>mule-plugin</classifier>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -57,6 +105,12 @@
             <url>https://repository.mulesoft.org/releases/</url>
             <layout>default</layout>
         </repository>
+        <repository>
+            <id>mulesoft-public</id>
+            <name>MuleSoft Public Repository</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+            <layout>default</layout>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -64,6 +118,12 @@
             <id>mulesoft-releases</id>
             <name>MuleSoft Releases Repository</name>
             <url>https://repository.mulesoft.org/releases/</url>
+            <layout>default</layout>
+        </pluginRepository>
+        <pluginRepository>
+            <id>mulesoft-public</id>
+            <name>MuleSoft Public Repository</name>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
             <layout>default</layout>
         </pluginRepository>
     </pluginRepositories>

@@ -1,0 +1,19 @@
+# Mule build artifacts
+target/
+*.jar
+
+# Pipeline state (contains env-specific IDs)
+.mule-build.yaml
+.mule-deploy.yaml
+.mule-pipeline.yaml
+.mule-lifecycle/
+
+# Backups
+*.backup
+
+# Downloaded artifacts
+downloaded-config.yaml
+
+# SECRETS — do NOT commit
+# deploy.yaml may contain secureProperties (Basic auth, API tokens)
+deploy.yaml
