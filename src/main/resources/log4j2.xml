@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5p %d [%t] [processor: %X{processorPath}; event: %X{correlationId}] %c: %m%n"/>
+        </Console>
+
+        <Http name="OpenObserveHttp"
+              url="${sys:openobserve.url:-http://unset/}/api/default/hello-api/_json"
+              method="POST"
+              connectTimeoutMillis="3000"
+              readTimeoutMillis="3000"
+              verifyHostname="true">
+            <Property name="Authorization" value="Basic ${sys:openobserve.auth:-}"/>
+            <Property name="Content-Type" value="application/json"/>
+            <JsonLayout complete="false"
+                        compact="true"
+                        eventEol="false"
+                        properties="true"
+                        includeStacktrace="true"
+                        stacktraceAsString="true"/>
+        </Http>
+
+        <Async name="OpenObserveAsync" bufferSize="1024" blocking="false">
+            <AppenderRef ref="OpenObserveHttp"/>
+        </Async>
+    </Appenders>
+
+    <Loggers>
+        <AsyncLogger name="org.mule.service.http" level="WARN"/>
+        <AsyncLogger name="org.mule.extension.http" level="WARN"/>
+        <AsyncLogger name="org.mule.runtime.core.internal.processor.LoggerMessageProcessor" level="INFO"/>
+
+        <AsyncRoot level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="OpenObserveAsync"/>
+        </AsyncRoot>
+    </Loggers>
+
+</Configuration>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:http="http://www.mulesoft.org/schema/mule/http"
+      xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+      xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
+      xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+        http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd
+        http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+
+    <configuration-properties file="config.yaml"/>
+
+    <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config">
+        <http:listener-connection host="0.0.0.0" port="${http.port}"/>
+    </http:listener-config>
+
+    <apikit:config name="hello-api-config" api="api/openapi.yaml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus"/>
+
+    <api-gateway:autodiscovery apiId="${api.id}" flowRef="hello-api-main" doc:name="API Autodiscovery"/>
+
+    <configuration defaultErrorHandler-ref="global-error-handler"/>
+
+    <error-handler name="global-error-handler" doc:name="Global Error Handler">
+        <on-error-continue type="APIKIT:BAD_REQUEST" doc:name="Bad Request">
+            <set-variable variableName="httpStatus" value="400"/>
+            <set-payload value='{"error": "Bad Request"}' mimeType="application/json"/>
+        </on-error-continue>
+        <on-error-continue type="APIKIT:NOT_FOUND" doc:name="Not Found">
+            <set-variable variableName="httpStatus" value="404"/>
+            <set-payload value='{"error": "Resource not found"}' mimeType="application/json"/>
+        </on-error-continue>
+        <on-error-continue type="APIKIT:METHOD_NOT_ALLOWED" doc:name="Method Not Allowed">
+            <set-variable variableName="httpStatus" value="405"/>
+            <set-payload value='{"error": "Method not allowed"}' mimeType="application/json"/>
+        </on-error-continue>
+        <on-error-continue type="ANY" doc:name="Default">
+            <set-variable variableName="httpStatus" value="500"/>
+            <set-payload value='{"error": "Internal server error"}' mimeType="application/json"/>
+        </on-error-continue>
+    </error-handler>
+
+</mule>
