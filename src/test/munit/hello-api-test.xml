@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
+      xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+      xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+        http://www.mulesoft.org/schema/mule/munit-tools http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+
+    <munit:config name="hello-api-test-suite"/>
+
+    <munit:test name="test-get-hello-returns-200" doc:name="GET /hello returns 200 with greeting">
+        <munit:execution>
+            <flow-ref name="hello-flow"/>
+        </munit:execution>
+        <munit:validation>
+            <munit-tools:assert-that expression="#[payload]" is="#[MunitTools::notNullValue()]" doc:name="Payload is not null"/>
+            <munit-tools:assert-that expression="#[output application/java --- payload.message]" is="#[MunitTools::equalTo('Hello, World!')]" doc:name="Message is Hello, World!"/>
+        </munit:validation>
+    </munit:test>
+
+    <munit:test name="test-get-goodbye-returns-200" doc:name="GET /goodbye returns 200 with farewell">
+        <munit:execution>
+            <flow-ref name="get:\goodbye:hello-api-config"/>
+        </munit:execution>
+        <munit:validation>
+            <munit-tools:assert-that expression="#[payload]" is="#[MunitTools::notNullValue()]" doc:name="Payload is not null"/>
+            <munit-tools:assert-that expression="#[output application/java --- payload.message]" is="#[MunitTools::equalTo('Goodbye, World!')]" doc:name="Message is Goodbye, World!"/>
+        </munit:validation>
+    </munit:test>
+
+</mule>
